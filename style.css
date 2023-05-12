@@ -1,15 +1,13 @@
-.container{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+.container {
+    display: grid;
     flex-wrap: wrap;
 }
 
-.row{
-    flex-shrink: 1;
+.square {
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
     border: solid black;
-    margin: 2px;
 }
 
 /*https://stackoverflow.com/questions/2648733/make-a-div-square-when-there-is-a-dynamically-changing-width-based-on-percenta

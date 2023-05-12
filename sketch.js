@@ -1,20 +1,14 @@
-const rowsJs = Number(prompt('How many rows of squares would you like to see?'));
-const columnsJs = Number(prompt('How many columns of squares would you like to see?'));
-
+//const rowsJs = Number(prompt('How many rows of squares would you like to see?'));
+const columnsJs = Number(prompt('How many rows and columns of squares would you like to see?'));
+const squared = columnsJs * columnsJs;
 const container = document.body.querySelector('.container');
 
+container.style.gridTemplateColumns = `repeat(${columnsJs}, 1fr)`;
+container.style.gridTemplateRows = `repeat(${columnsJs}, 1fr)`;
+for (let i = 0; i < squared; i++) {
+    const square = document.createElement('div');
+    square.classList.add('square');
 
-for (let i = 0; i < columnsJs; i++) {
-    const columnHtml = document.createElement('div');
-    columnHtml.classList.add('column');
-    columnHtml.textContent = 'testing column';
-    container.appendChild(columnHtml);
-    for (let i = 0; i < rowsJs; i++) {
-        const rowHtml = document.createElement('div');
-        rowHtml.classList.add('row');
-        rowHtml.textContent = 'testing row';
-        columnHtml.appendChild(rowHtml);
-    }
+    square.textContent = 'hello';
+    container.appendChild(square);
 }
-
-
