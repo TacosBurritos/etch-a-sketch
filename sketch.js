@@ -78,9 +78,9 @@ function gridSize() {
             container.appendChild(square);
         }
     }
-    else if(columnsJs <= 100 && columnsJs > 64){
-        container.style.gridTemplateColumns = `repeat(${columnsJs+1}, 1fr)`;
-        container.style.gridTemplateRows = `repeat(${columnsJs+1}, 1fr)`;
+    else if (columnsJs <= 100 && columnsJs > 64) {
+        container.style.gridTemplateColumns = `repeat(${columnsJs + 1}, 1fr)`;
+        container.style.gridTemplateRows = `repeat(${columnsJs + 1}, 1fr)`;
         //the for loop creates grid
         for (let i = 0; i < squared; i++) {
             const square = document.createElement('div');
@@ -88,7 +88,7 @@ function gridSize() {
             container.appendChild(square);
         }
     }
-    else{
+    else {
         alert('Please enter a value that is between 1 and 100.');
     }
 }
@@ -115,18 +115,24 @@ function rainbow() {
     squareCheck(erasing, sketching, rainbowing);
 }
 
-function resetButton() {
-
+function clear() {
+    const squares = document.body.querySelectorAll('.square');
+    squares.forEach((square) => {
+        square.style.backgroundColor = '';
+    })
 }
 
 const sizeOfGrid = document.body.querySelector('.size');
 const sketches = document.body.querySelector('.sketch');
 const eraser = document.body.querySelector('.eraser');
 const rainbows = document.body.querySelector('.rainbow');
+const clearGrid = document.body.querySelector('.clear');
+
 sizeOfGrid.addEventListener('click', gridSize);
 sketches.addEventListener('click', sketch);
 eraser.addEventListener('click', erase);
 rainbows.addEventListener('click', rainbow);
+clearGrid.addEventListener('click', clear);
 
 //logic i want to build is that if the user presses sketch button when
 //the user clicks and hovers that particular squares will turn gray
