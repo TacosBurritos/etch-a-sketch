@@ -1,13 +1,45 @@
+body{
+    background-color: orangered;
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+}
+
+.entire{
+    display: flex;
+}
+
+.buttons {
+    border: dotted black;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    margin-right: 10px;
+    padding: 5px;
+    justify-content: center;
+    background-color: blueviolet;
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .container {
     display: grid;
     flex-wrap: wrap;
+    flex-grow: 1;
+    background-color: white;
+    border: solid black;
 }
 
 .square {
     aspect-ratio: 1/1;
     display: flex;
     align-items: center;
-    border: solid black;
+    /* border: solid black; */
 }
 
 /*https://stackoverflow.com/questions/2648733/make-a-div-square-when-there-is-a-dynamically-changing-width-based-on-percenta

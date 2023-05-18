@@ -5,6 +5,7 @@ const initialValue = 16;
 let erasing = false;
 let sketching = false;
 let rainbowing = false;
+let darker = false;
 
 //the two lines allow the computer to know how many squares should be in the row and column
 container.style.gridTemplateColumns = `repeat(${initialValue}, 1fr)`;
@@ -27,7 +28,7 @@ function randomRGBColor() {
 }
 
 //function to calculate which squares to change color or which squares are being clicked
-function squareCheck(erasing, sketching, rainbowing) {
+function squareCheck(erasing, sketching, rainbowing, darker) {
     const squares = document.body.querySelectorAll('.square');
     let click = false; //boolean to mark whether mousedown is active or not
     squares.forEach((square) => {
@@ -41,6 +42,9 @@ function squareCheck(erasing, sketching, rainbowing) {
             }
             else if (rainbowing) {
                 square.style.backgroundColor = randomRGBColor();//experimenting with color red, must change color later
+            }
+            else if (darker) {
+                square.style.filter += 'brightness(90%)';
             }
         });
         square.addEventListener('mouseup', () => {
@@ -59,6 +63,9 @@ function squareCheck(erasing, sketching, rainbowing) {
                 }
                 else if (rainbowing) {
                     square.style.backgroundColor = randomRGBColor();//experimenting with color red, must change color later
+                }
+                else if (darker) {
+                    square.style.filter += 'brightness(90%)';
                 }
             }
         });
@@ -98,21 +105,24 @@ function erase() {
     erasing = true;
     sketching = false;
     rainbowing = false;
-    squareCheck(erasing, sketching, rainbowing);
+    darker = false;
+    squareCheck(erasing, sketching, rainbowing, darker);
 }
 
 function sketch() {
     sketching = true;
     erasing = false;
     rainbowing = false;
-    squareCheck(erasing, sketching, rainbowing);
+    darker = false;
+    squareCheck(erasing, sketching, rainbowing, darker);
 }
 
 function rainbow() {
     sketching = false;
     erasing = false;
     rainbowing = true;
-    squareCheck(erasing, sketching, rainbowing);
+    darker = false;
+    squareCheck(erasing, sketching, rainbowing, darker);
 }
 
 function clear() {
@@ -121,17 +131,25 @@ function clear() {
         square.style.backgroundColor = '';
     })
 }
+// function shader() {
+//     const squares = document.body.querySelectorAll('.square');
+//     squares.forEach((square) => {
+//         square.style.filter += 'brightness(90%)';
+//     })
+// }
 
 const sizeOfGrid = document.body.querySelector('.size');
 const sketches = document.body.querySelector('.sketch');
 const eraser = document.body.querySelector('.eraser');
 const rainbows = document.body.querySelector('.rainbow');
+// const shading = document.body.querySelector('.shading');
 const clearGrid = document.body.querySelector('.clear');
 
 sizeOfGrid.addEventListener('click', gridSize);
 sketches.addEventListener('click', sketch);
 eraser.addEventListener('click', erase);
 rainbows.addEventListener('click', rainbow);
+// shading.addEventListener('click', shader);
 clearGrid.addEventListener('click', clear);
 
 //logic i want to build is that if the user presses sketch button when
